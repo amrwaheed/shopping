@@ -25,39 +25,8 @@
   }
 
   
-    itemOne = JSON.parse(sessionStorage.getItem('details')); // []
-    products = JSON.parse(localStorage.getItem('Products'));// [{}]
-  
-    row = document.getElementsByClassName("row")[0];
-    count = 1;
-    for (let i = 0; i < itemOne.length; i++) {
-  
-      for (let j = 0; j < products.length; j++) {
-       
-        if (itemOne[i] == j) {
-         
-          html = "<tr>\
-            <div class='col-md-6'>\
-            <div class='buyitem-img'> <img style='width:100%;' src='images/"+products[j].Url+"' alt=''></div><br />\
-            </div>\
-            <div class='col-md-6'>\
-            <h2>PRODUCT SPECIFICATIONS </h2><br>\
-            <h4>Name :  "+products[j].Name+"</h4><br>\
-            <h4>Price :  "+products[j].Price+"</h4><br>\
-            <p>description :  "+products[j].Description+"</p><br/>\
-            <button id='"+j+"' class='btn btn-primary shop-item-button ml-2 item' type='button'>ADD TO CART</button> \
-             <a href='store.html' class='btn btn-primary'>Back To Store</a> \
-            </div>\
-            ";
-
-            row.innerHTML += html;
-
-        }
-
-      }
-    
-
-    }
+    itemOne = JSON.parse(sessionStorage.getItem('details')); // number
+    getProductDetails(itemOne); 
 
  
     button = document.getElementsByClassName("item");
@@ -79,11 +48,28 @@
    
 
 
-
-  
-
-    
-
-
   }
 
+function getProductDetails(indexItem) {
+  products = JSON.parse(localStorage.getItem('Products'));// [{}]
+  
+    row = document.getElementsByClassName("row")[0];
+    
+      html = "<tr>\
+        <div class='col-md-6'>\
+        <div class='buyitem-img'> <img style='width:100%;' src='images/"+products[indexItem].Url+"' alt=''></div><br />\
+        </div>\
+        <div class='col-md-6'>\
+        <h2>PRODUCT SPECIFICATIONS </h2><br>\
+        <h4>Name :  "+products[indexItem].Name+"</h4><br>\
+        <h4>Price :  "+products[indexItem].Price+"</h4><br>\
+        <p>description :  "+products[indexItem].Description+"</p><br/>\
+        <button id='"+indexItem+"' class='btn btn-primary shop-item-button ml-2 item' type='button'>ADD TO CART</button> \
+          <a href='store.html' class='btn btn-primary'>Back To Store</a> \
+        </div>\
+        ";
+
+        row.innerHTML += html;
+
+
+}

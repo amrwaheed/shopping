@@ -65,27 +65,18 @@ function doitfirst() {
         });
        
     }
-   
-    
-    // console.log(button);
-
-
 
 
     details = document.getElementsByClassName("details");
-    item = [];
+    // item = [];
     for (let i = 0; i < details.length; i++) {
         details[i].addEventListener("click",function(){
             index = parseInt(details[i].getAttribute("data-item"));
-            item.push(index);
-            sessionStorage.setItem("details",JSON.stringify(item));
-            console.log(item);
+            // item.push(index);
+            sessionStorage.setItem("details",JSON.stringify(index));
         });
        
     }
-    
-    // console.log(details);
-    
 
 
 }
